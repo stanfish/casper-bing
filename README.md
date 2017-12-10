@@ -1,6 +1,6 @@
 ## Description
 
-Login to a microsoft account and do some bing search daily
+Login to a microsoft account and do some bing searches daily
 
 
 ## Requirement
@@ -31,7 +31,7 @@ CasperJS
 
 Add
 
-`0 6 * * * /PATH/dailyscript.sh`
+`0 6 * * * /PATH/script/dailyscript.sh`
 
 
 ## License

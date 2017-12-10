@@ -2,12 +2,12 @@ var config = require('config.dev.json');
 var email = config.email;
 var password = config.password;
 var startLink = 'https://account.microsoft.com/account/ManageMyAccount';
-var timePeriod = 18000;
-var times = 10;
-const keyA = new Array("2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "how+to", "when", "download", "how", "what", "internet", "time", "auto", "for+sale", "deal", "video", "korean", "chinese", "CA", "radio", "sticker", "MSN", "google", "bing", "iphone", "apple", "android", "Bill+Gate", "movie", "dramas", "tv", "definition", "map", "New+York", "book", "Amazon", "computer", "news", "2011", "2012", "2003", "MS", "cheap", "hotmail", "hello", "website", "diy", "day", "month", "MC", "Justin", "songs", "sleeping", "hiking", "place", "food", "tools", "name", "John", "happening", "NASA", "software", "accounting", "CEO", "company", "stock", "prices", "game", "windows", "mac", "honda", "BMW", "tel", "address", "how+much", "email", "weather", "doctor", "walmart", "lion", "sony", "work", "salary", "burger", "address", "we", "know", "jelly", "bean", "lol", "star", "music", "1998", "MSN", "messager", "gtalk", "hangout", "samsung", "x10", "nexus", "2013", "2014", "N4", "PS4", "wii", "year", "CA", "Irvine", "remote", "mobile", "one", "sc2", "pokemon", "hardware", "xbox", "iphone+case", "sticker", "apps", "Los+Angeles", "way", "cat", "toy", "peppa", "micky", "travel");
+var timePeriod = 55000;
+var times = 38;
+const keyA = new Array("Toyota","Honda","Kia","Benz","Lakers","Iphone+X","2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "how+to", "when", "download", "how", "what", "internet", "time", "auto", "for+sale", "deal", "video", "korean", "chinese", "CA", "radio", "sticker", "MSN", "google", "bing", "iphone", "apple", "android", "Bill+Gate", "movie", "dramas", "tv", "definition", "map", "New+York", "book", "Amazon", "computer", "news", "2011", "2012", "2003", "MS", "cheap", "hotmail", "hello", "website", "diy", "day", "month", "MC", "Justin", "songs", "sleeping", "hiking", "place", "food", "tools", "name", "John", "happening", "NASA", "software", "accounting", "CEO", "company", "stock", "prices", "game", "windows", "mac", "honda", "BMW", "tel", "address", "how+much", "email", "weather", "doctor", "walmart", "lion", "sony", "work", "salary", "burger", "address", "we", "know", "jelly", "bean", "lol", "star", "music", "1998", "MSN", "messager", "gtalk", "hangout", "samsung", "x10", "nexus", "2013", "2014", "N4", "PS4", "wii", "year", "CA", "Irvine", "remote", "mobile", "one", "sc2", "pokemon", "hardware", "xbox", "iphone+case", "sticker", "apps", "Los+Angeles", "way", "cat", "toy", "peppa", "micky", "travel");
 
 const fs = require('fs');
-const logFile = 'myCasper.log';
+const logFile = 'log/myCasper.log';
 const moment = require('moment');
 
 
