@@ -29,7 +29,7 @@ CasperJS
 
 `forever start log.js`
 
-`localhost:3000`
+`http://localhost:3000`
 
 
 ## Daily Cron Job
