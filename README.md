@@ -25,6 +25,12 @@ CasperJS
 `tail myCasper.log -F`
 
 
+## Log in web
+
+`forever start log.js`
+`localhost:3000`
+
+
 ## Daily Cron Job
 
 `crontab -e`
