@@ -1,7 +1,7 @@
 var config = require('config.dev.json');
 var email = config.email;
 var password = config.password;
-var startLink = 'https://account.microsoft.com/account/ManageMyAccount';
+var startLink = 'https://account.microsoft.com/rewards/';
 var timePeriod = 55000;
 var times = 38;
 const keyA = new Array("Toyota","Honda","Kia","Benz","Lakers","Iphone+X","2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "how+to", "when", "download", "how", "what", "internet", "time", "auto", "for+sale", "deal", "video", "korean", "chinese", "CA", "radio", "sticker", "MSN", "google", "bing", "iphone", "apple", "android", "Bill+Gate", "movie", "dramas", "tv", "definition", "map", "New+York", "book", "Amazon", "computer", "news", "2011", "2012", "2003", "MS", "cheap", "hotmail", "hello", "website", "diy", "day", "month", "MC", "Justin", "songs", "sleeping", "hiking", "place", "food", "tools", "name", "John", "happening", "NASA", "software", "accounting", "CEO", "company", "stock", "prices", "game", "windows", "mac", "honda", "BMW", "tel", "address", "how+much", "email", "weather", "doctor", "walmart", "lion", "sony", "work", "salary", "burger", "address", "we", "know", "jelly", "bean", "lol", "star", "music", "1998", "MSN", "messager", "gtalk", "hangout", "samsung", "x10", "nexus", "2013", "2014", "N4", "PS4", "wii", "year", "CA", "Irvine", "remote", "mobile", "one", "sc2", "pokemon", "hardware", "xbox", "iphone+case", "sticker", "apps", "Los+Angeles", "way", "cat", "toy", "peppa", "micky", "travel");
@@ -17,9 +17,10 @@ function writeToLog(msg) {
 }
 
 function getReward() {
-    var box = document.querySelectorAll(".rewards-module .primary-text");
+    var box = document.querySelectorAll("b.x-hidden-focus");
     return box;
 }
+
 
 var casper = require('casper').create({
     pageSettings: {
@@ -35,6 +36,9 @@ var casper = require('casper').create({
 writeToLog('-----------------------------------------');
 
 casper.start(startLink, function goToLoginPage() {
+
+//    debugger;
+
     writeToLog('Click to login');
     this.click('#signinhero');
 });
@@ -63,10 +67,25 @@ casper.then(function clickButton() {
     this.click('input[type="submit"]');
 });
 
-casper.waitForSelector(".title-detail", function dashboard() {
+//.home-banner-profile-section
+casper.waitForSelector("header.c-category-header", function dashboard() {
     writeToLog('Logged in');
-    var reward = this.evaluate(getReward);
-    writeToLog("*********** Current Point: " + reward[0].innerHTML);
+   // this.captureSelector('yoursitelist.png', 'div.x-hidden-focus');
+
+//     var dlData = this.evaluate(function(){
+//         var dl = document.querySelector('b.x-hidden-focus');
+//         return dl;
+//       });
+
+ //      writeToLog(dlData);
+
+//    var reward = this.evaluate(getReward);
+//    console.log(reward);
+//    console.log(reward.length);
+//    console.log(JSON.stringify(reward));
+//    if (reward[1]){
+//	writeToLog("*********** Current Point: " + reward[1].innerHTML);
+//    }
 });
 
 var searchData = [];
