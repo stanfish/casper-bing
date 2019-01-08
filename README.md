@@ -32,6 +32,15 @@ CasperJS
 `http://localhost:3000`
 
 
+Make it auto start when reboot (optional)
+
+`crontab -e`
+
+Add
+
+`@reboot forever start /PATH/log.js`
+
+
 ## Daily Cron Job
 
 `crontab -e`
