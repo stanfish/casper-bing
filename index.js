@@ -70,14 +70,23 @@ casper.then(function clickButton() {
 //.home-banner-profile-section
 casper.waitForSelector("header.c-category-header", function dashboard() {
     writeToLog('Logged in');
-   // this.captureSelector('yoursitelist.png', 'div.x-hidden-focus');
 
-//     var dlData = this.evaluate(function(){
-//         var dl = document.querySelector('b.x-hidden-focus');
-//         return dl;
-//       });
+    try {
+        var imageTime = moment().subtract({ 'hours': 8 }).format();
+        var imageName = "save" + imageTime.replace(/-|:/g, '') + ".png";
+        this.captureSelector("images/"+imageName, 'div.title-detail span');
+        writeToLog('*********** Current Point: <img src="'+imageName+'"> ');
+    }
+    catch (error){
+        writeToLog('error in getting points information',error);
+    }
 
- //      writeToLog(dlData);
+    // var dlData = this.evaluate(function(){
+    //     var dl = document.querySelectorAll('div.title-detail');
+    //     return dl;
+    //   });
+
+     //  writeToLog('dlData',dlData);
 
 //    var reward = this.evaluate(getReward);
 //    console.log(reward);
@@ -122,4 +131,9 @@ casper.run(function () {
     this.exit();
 });
 
+
+
+casper.on('error', function(msg, trace) {
+    writeToLog('ERROR', msg, trace);
+});
 

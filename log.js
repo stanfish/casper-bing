@@ -5,7 +5,7 @@ const logFile = 'log/myCasper.log';
 
 app.get('/', (req, res) => {
   var text = fs.readFileSync(logFile,'utf8');
-  var points = text.match(/logged in\s[^\s]*\s[^\s]*\scurrent point:\s[^\s]*\s/gi);
+  var points = text.match(/logged in\s[^\s]*\s[^\s]*\scurrent point:\s<.*>/gi);
   var link = '<a href="/full">Full Log</a><br />';
   if (points) {
     res.send(link+points.reverse().join('<br />'));
@@ -22,6 +22,7 @@ app.get('/full', (req, res) => {
   }
 });
 
-
+var publicDir = require('path').join(__dirname,'/images');
+app.use(express.static(publicDir));
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
 
