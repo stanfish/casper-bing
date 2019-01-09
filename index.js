@@ -71,7 +71,7 @@ casper.then(function clickButton() {
 casper.waitForSelector("header.c-category-header", function dashboard() {
     writeToLog('Logged in');
 
-    var timeR = (Math.floor(Math.random() * 3) + 0.4) * 10000;
+    var timeR = (Math.floor(Math.random() * 3) + 0.4) * 50000;
     casper.wait(timeR, function () {
         writeToLog('wait a little... ');
 
