@@ -71,15 +71,23 @@ casper.then(function clickButton() {
 casper.waitForSelector("header.c-category-header", function dashboard() {
     writeToLog('Logged in');
 
-    try {
-        var imageTime = moment().subtract({ 'hours': 8 }).format();
-        var imageName = "save" + imageTime.replace(/-|:/g, '') + ".png";
-        this.captureSelector("images/"+imageName, 'div.title-detail span');
-        writeToLog('*********** Current Point: <img src="'+imageName+'"> ');
-    }
-    catch (error){
-        writeToLog('error in getting points information',error);
-    }
+    var timeR = (Math.floor(Math.random() * 3) + 0.4) * 10000;
+    casper.wait(timeR, function () {
+        writeToLog('wait a little... ');
+
+        try {
+            var imageTime = moment().subtract({ 'hours': 8 }).format();
+            var imageName = "save" + imageTime.replace(/-|:/g, '') + ".png";
+            this.captureSelector("images/"+imageName, 'div.title-detail span');
+            writeToLog('*********** Current Point: <img src="'+imageName+'"> ');
+        }
+        catch (error){
+            writeToLog('error in getting points information',error);
+        }
+
+    });
+
+
 
     // var dlData = this.evaluate(function(){
     //     var dl = document.querySelectorAll('div.title-detail');
