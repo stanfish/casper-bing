@@ -5,7 +5,7 @@ const logFile = 'log/myCasper.log';
 
 app.get('/', (req, res) => {
   var text = fs.readFileSync(logFile,'utf8');
-  var points = text.match(/current point:\s<.*>/gi);
+  var points = text.match(/\n.*current point:\s<.*>/gi);
   var link = '<a href="/full">Full Log</a><br />';
   if (points) {
     res.send(link+points.reverse().join('<br />'));
