@@ -14,10 +14,15 @@ CasperJS
 
 `npm install`
 
+## Update email and password in config file: config.dev.json
 
 ## Run
 
 `casperjs index.js`
+
+For multiple account, create more config files based on config.dev.json, then run:
+
+`casperjs index.js new_config_file`
 
 
 ## Log 
@@ -42,6 +47,8 @@ Add
 
 
 ## Daily Cron Job
+
+Update PATH in script/dailyscript.sh
 
 `crontab -e`
 

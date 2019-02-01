@@ -1,10 +1,8 @@
-var config = require('config.dev.json');
-var email = config.email;
-var password = config.password;
+
 var startLink = 'https://account.microsoft.com/rewards/';
 var timePeriod = 55000;
 var times = 38;
-const keyA = new Array("Toyota","Honda","Kia","Benz","Lakers","Iphone+X","2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "how+to", "when", "download", "how", "what", "internet", "time", "auto", "for+sale", "deal", "video", "korean", "chinese", "CA", "radio", "sticker", "MSN", "google", "bing", "iphone", "apple", "android", "Bill+Gate", "movie", "dramas", "tv", "definition", "map", "New+York", "book", "Amazon", "computer", "news", "2011", "2012", "2003", "MS", "cheap", "hotmail", "hello", "website", "diy", "day", "month", "MC", "Justin", "songs", "sleeping", "hiking", "place", "food", "tools", "name", "John", "happening", "NASA", "software", "accounting", "CEO", "company", "stock", "prices", "game", "windows", "mac", "honda", "BMW", "tel", "address", "how+much", "email", "weather", "doctor", "walmart", "lion", "sony", "work", "salary", "burger", "address", "we", "know", "jelly", "bean", "lol", "star", "music", "1998", "MSN", "messager", "gtalk", "hangout", "samsung", "x10", "nexus", "2013", "2014", "N4", "PS4", "wii", "year", "CA", "Irvine", "remote", "mobile", "one", "sc2", "pokemon", "hardware", "xbox", "iphone+case", "sticker", "apps", "Los+Angeles", "way", "cat", "toy", "peppa", "micky", "travel");
+const keyA = new Array("Cloud","AWS","raspberry","pi","Toyota","Honda","Kia","Benz","Lakers","Iphone+X","2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "how+to", "when", "download", "how", "what", "internet", "time", "auto", "for+sale", "deal", "video", "korean", "chinese", "CA", "radio", "sticker", "MSN", "google", "bing", "iphone", "apple", "android", "Bill+Gate", "movie", "dramas", "tv", "definition", "map", "New+York", "book", "Amazon", "computer", "news", "2011", "2012", "2003", "MS", "cheap", "hotmail", "hello", "website", "diy", "day", "month", "MC", "Justin", "songs", "sleeping", "hiking", "place", "food", "tools", "name", "John", "happening", "NASA", "software", "accounting", "CEO", "company", "stock", "prices", "game", "windows", "mac", "honda", "BMW", "tel", "address", "how+much", "email", "weather", "doctor", "walmart", "lion", "sony", "work", "salary", "burger", "address", "we", "know", "jelly", "bean", "lol", "star", "music", "1998", "MSN", "messager", "gtalk", "hangout", "samsung", "x10", "nexus", "2013", "2014", "N4", "PS4", "wii", "year", "CA", "Irvine", "remote", "mobile", "one", "sc2", "pokemon", "hardware", "xbox", "iphone+case", "sticker", "apps", "Los+Angeles", "way", "cat", "toy", "peppa", "micky", "travel");
 
 const fs = require('fs');
 const logFile = 'log/myCasper.log';
@@ -21,7 +19,6 @@ function getReward() {
     return box;
 }
 
-
 var casper = require('casper').create({
     pageSettings: {
         userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.10 (KHTML, like Gecko) Chrome/23.0.1262.0 Safari/537.10'
@@ -32,6 +29,16 @@ var casper = require('casper').create({
     },
 });
 
+
+var configFile = casper.cli.args[0] ? casper.cli.args[0] : 'config.dev.json';
+var config;
+try {
+    config = require(configFile);
+} catch(e) {
+    console.log('Error: Config file: '+configFile);
+}
+var email = config.email;
+var password = config.password;
 
 writeToLog('-----------------------------------------');
 
@@ -79,7 +86,7 @@ casper.waitForSelector("header.c-category-header", function dashboard() {
             var imageTime = moment().subtract({ 'hours': 8 }).format();
             var imageName = "save" + imageTime.replace(/-|:/g, '') + ".png";
             this.captureSelector("images/"+imageName, 'div.title-detail span');
-            writeToLog('*********** Current Point: <img src="'+imageName+'"> ');
+            writeToLog('*********** (' + configFile + ') Current Point: <img src="'+imageName+'"> ');
         }
         catch (error){
             writeToLog('error in getting points information',error);
