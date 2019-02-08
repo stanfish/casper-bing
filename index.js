@@ -1,4 +1,3 @@
-casper.options.waitTimeout = 30000;
 
 var startLink = 'https://account.microsoft.com/rewards/';
 var timePeriod = 55000;
