@@ -11,7 +11,7 @@ const moment = require('moment');
 
 function writeToLog(msg) {
     console.log(msg);
-    fs.write(logFile, '\n' + moment().subtract({ 'hours': 8 }).format() + ': ' + msg, 'a');
+    fs.write(logFile, '\n' + moment().format() + ': ' + msg, 'a');
 }
 
 function getReward() {
