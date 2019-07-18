@@ -47,7 +47,7 @@ casper.start(startLink, function goToLoginPage() {
 //    debugger;
 
     writeToLog('Click to login');
-    this.click('#signinhero');
+    this.click('#signinlinkhero');
 });
 
 casper.then(function fillLoginDetails() {
@@ -151,4 +151,3 @@ casper.run(function () {
 casper.on('error', function(msg, trace) {
     writeToLog('ERROR', msg, trace);
 });
-
