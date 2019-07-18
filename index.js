@@ -78,7 +78,7 @@ casper.then(function clickButton() {
 casper.waitForSelector("header.c-category-header", function dashboard() {
     writeToLog('Logged in');
 
-    var timeR = (Math.floor(Math.random() * 3) + 0.4) * 50000;
+    var timeR = (Math.floor(Math.random() * 3) + 0.4) * 100000;
     casper.wait(timeR, function () {
         writeToLog('wait a little... ');
 
@@ -110,7 +110,7 @@ casper.waitForSelector("header.c-category-header", function dashboard() {
 //    if (reward[1]){
 //	writeToLog("*********** Current Point: " + reward[1].innerHTML);
 //    }
-});
+},null,50000);
 
 var searchData = [];
 var k = 0;
