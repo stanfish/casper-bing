@@ -55,7 +55,7 @@ casper.waitForSelector('form[name="f1"]', function fillLoginDetails() {
     this.fill('form[name="f1"]', {
         'loginfmt': email
     }, false);
-});
+}, null,10000);
 
 casper.then(function clickButton() {
     writeToLog('Submit');
