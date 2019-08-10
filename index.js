@@ -50,7 +50,7 @@ casper.start(startLink, function goToLoginPage() {
     this.click('#signinlinkhero');
 });
 
-casper.then(function fillLoginDetails() {
+casper.waitForSelector('form[name="f1"]', function fillLoginDetails() {
     writeToLog('Fill in email: ' + email);
     this.fill('form[name="f1"]', {
         'loginfmt': email
