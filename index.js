@@ -2,7 +2,7 @@
 var startLink = 'https://account.microsoft.com/rewards/';
 var timePeriod = 55000;
 var times = 38;
-const keyA = new Array("Cloud","AWS","raspberry","pi","Toyota","Honda","Kia","Benz","Lakers","Iphone+X","2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "how+to", "when", "download", "how", "what", "internet", "time", "auto", "for+sale", "deal", "video", "korean", "chinese", "CA", "radio", "sticker", "MSN", "google", "bing", "iphone", "apple", "android", "Bill+Gate", "movie", "dramas", "tv", "definition", "map", "New+York", "book", "Amazon", "computer", "news", "2011", "2012", "2003", "MS", "cheap", "hotmail", "hello", "website", "diy", "day", "month", "MC", "Justin", "songs", "sleeping", "hiking", "place", "food", "tools", "name", "John", "happening", "NASA", "software", "accounting", "CEO", "company", "stock", "prices", "game", "windows", "mac", "honda", "BMW", "tel", "address", "how+much", "email", "weather", "doctor", "walmart", "lion", "sony", "work", "salary", "burger", "address", "we", "know", "jelly", "bean", "lol", "star", "music", "1998", "MSN", "messager", "gtalk", "hangout", "samsung", "x10", "nexus", "2013", "2014", "N4", "PS4", "wii", "year", "CA", "Irvine", "remote", "mobile", "one", "sc2", "pokemon", "hardware", "xbox", "iphone+case", "sticker", "apps", "Los+Angeles", "way", "cat", "toy", "peppa", "micky", "travel");
+const keyA = new Array("home","salonpas","cypress","sling","stock","gcp","mask","oculus","quest","vr","virtual","rift","switch","pixel","Cloud","AWS","raspberry","pi","Toyota","Honda","Kia","Benz","Lakers","Iphone+X","2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "how+to", "when", "download", "how", "what", "internet", "time", "auto", "for+sale", "deal", "video", "korean", "chinese", "CA", "radio", "sticker", "MSN", "google", "bing", "iphone", "apple", "android", "Bill+Gate", "movie", "dramas", "tv", "definition", "map", "New+York", "book", "Amazon", "computer", "news", "2011", "2012", "2003", "MS", "cheap", "hotmail", "hello", "website", "diy", "day", "month", "MC", "Justin", "songs", "sleeping", "hiking", "place", "food", "tools", "name", "John", "happening", "NASA", "software", "accounting", "CEO", "company", "stock", "prices", "game", "windows", "mac", "honda", "BMW", "tel", "address", "how+much", "email", "weather", "doctor", "walmart", "lion", "sony", "work", "salary", "burger", "address", "we", "know", "jelly", "bean", "lol", "star", "music", "1998", "MSN", "messager", "gtalk", "hangout", "samsung", "x10", "nexus", "2013", "2014", "N4", "PS4", "wii", "year", "CA", "Irvine", "remote", "mobile", "one", "sc2", "pokemon", "hardware", "xbox", "iphone+case", "sticker", "apps", "Los+Angeles", "way", "cat", "toy", "peppa", "micky", "travel");
 
 const fs = require('fs');
 const logFile = 'log/myCasper.log';
@@ -29,7 +29,6 @@ var casper = require('casper').create({
     },
 });
 
-
 var configFile = casper.cli.args[0] ? casper.cli.args[0] : 'config.dev.json';
 var config;
 try {
@@ -46,20 +45,36 @@ casper.start(startLink, function goToLoginPage() {
 
 //    debugger;
 
-    writeToLog('Click to login');
+    writeToLog(startLink+': Click to login');
     this.click('#signinlinkhero');
 });
 
 casper.waitForSelector('form[name="f1"]', function fillLoginDetails() {
     writeToLog('Fill in email: ' + email);
+
+    this.wait(2000, function () {
+            writeToLog('wait a little... ');
+
     this.fill('form[name="f1"]', {
-        'loginfmt': email
+            'loginfmt': email
     }, false);
-}, null,10000);
+
+
+    });
+
+}, null, 100000);
+
+
+//casper.waitForSelector('form[name="f1"]', function fillLoginDetails() {
+//                writeToLog('Fill in email: ' + email);
+//                this.fillSelectors('form[name="f1"]', {
+//                        'input[ name = loginfmt]': email
+//                }, false);
+//}, null, 100000);
 
 casper.then(function clickButton() {
-    writeToLog('Submit');
-    this.click('input[type="submit"]');
+writeToLog('Submit');
+this.click('input[type="submit"]');
 });
 
 casper.waitForSelector("#displayName", function fillPassword() {
@@ -72,6 +87,18 @@ casper.waitForSelector("#displayName", function fillPassword() {
 casper.then(function clickButton() {
     writeToLog('Submit');
     this.click('input[type="submit"]');
+});
+
+casper.then(function clickButton() {
+
+    casper.wait(5000, function () {
+        try {
+                this.click('input[type="submit"]');
+                writeToLog('Yes');
+        } catch (e) {
+                writeToLog('---');
+        }
+});
 });
 
 //.home-banner-profile-section
